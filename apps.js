@@ -3,6 +3,8 @@
 // input value golbaly function
 // input value golbaly function
 
+// univasal function for all scope function
+// get value by call another function  
 
 function getInputValue(inputValue){
 
@@ -69,9 +71,9 @@ function display(cartproduct){
     
     });
    
-   }
+   };
 
-}
+};
 
 
 
@@ -107,16 +109,7 @@ for (const select of selectAllButton) {
 }
 
 
-// univasal function for all scope function
-// get value by call another function  
 
-function getInputValue(inputValue){
-
-    const inputValueField = inputValue.value;
-    const inputValueFieldString = parseInt(inputValueField)
-    return inputValueFieldString;
-
-}
 
 
 
@@ -128,19 +121,20 @@ function getInputValue(inputValue){
 
 document.getElementById("total-Calculate").addEventListener("click",function(){
 
-
+        // get input  value by coling function manager and cotch
+        // get input  value by coling function manager and cotch
         const managerExpanse = document.getElementById("manager-expanse");
         const coachExpanse = document.getElementById("coach-expanse");
         const  managerOutput = getInputValue(managerExpanse);
         const coachOutput = getInputValue(coachExpanse);
 
 
-
+        // get result with palyer expenses 
         const  playerCalculateTwo = document.getElementById("player-expanses").innerText;
         const playerCalculateStrig =parseInt(playerCalculateTwo) 
 
 
-
+        // all player and manager cotch subtotal 
         const perManagerOptput =  managerOutput + coachOutput + playerCalculateStrig ;
 
 
