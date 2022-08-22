@@ -1,3 +1,15 @@
+function getInputValue(inputValue){
+
+    const inputValueField = inputValue.value;
+    const inputValueFieldString = parseInt(inputValueField)
+    return inputValueFieldString;
+
+}
+const perPlayerCount = document.getElementById("Total-added-player")
+
+
+
+
 
 const cartArray = [];
 
@@ -8,11 +20,11 @@ function display(cartproduct){
     const tableBody = document.getElementById("player-selected");
     tableBody.innerHTML = "";
 
-   for(let i = 0; i < cartproduct.length; i++){
+    for(let i = 1; i <= cartproduct.length; i++){
        const numberOfPlayer = i;
+       console.log(numberOfPlayer)
        
-
-    if(numberOfPlayer <= 4 ){
+    if(numberOfPlayer <= 3 ){
         const nameBox = cartArray[i].PlayerName;
    
         const tr = document.createElement("tr");
@@ -26,13 +38,36 @@ function display(cartproduct){
         tableBody.appendChild(tr);
       
     }else{
-        console.log("ami pagol")
+       
 
     }
-   
+    document.getElementById("calculate-btn").addEventListener("click",function(){
+        const addedPlayer = numberOfPlayer;
+        
     
-  
+        const perPlayeroutput = getInputValue(perPlayerCount);
+        
+    
+    
+    
+    
+        const playerExpenses = addedPlayer * perPlayeroutput;
+        console.log(playerExpenses)
+    
+    
+        const playerCalculate = document.getElementById("player-expanses");
+    
+    
+        playerCalculate.innerText = playerExpenses;
+    
+    });
+    
+
    }
+
+
+
+
 }
 
 const selectAllButton = document.querySelectorAll('.item');
@@ -62,6 +97,9 @@ for (const select of selectAllButton) {
     })
 }
 
+
+
+
 function getInputValue(inputValue){
 
     const inputValueField = inputValue.value;
@@ -70,29 +108,31 @@ function getInputValue(inputValue){
 
 }
 
-const perPlayerCount = document.getElementById("Total-added-player")
+
+// document.getElementById("calculate-btn").addEventListener("click",function(){
+//     const addedPlayer = numberOfPlayer;
+    
+
+//     const perPlayeroutput = getInputValue(perPlayerCount);
+//     console.log("box", perPlayeroutput, typeof perPlayeroutput)
 
 
 
 
-document.getElementById("calculate-btn").addEventListener("click",function(){
-    const addedPlayer = 5;
+//     const playerExpenses = addedPlayer * perPlayeroutput;
+//     console.log(playerExpenses)
 
 
-    const perPlayeroutput = getInputValue(perPlayerCount);
+//     const playerCalculate = document.getElementById("player-expanses");
+
+
+//     playerCalculate.innerText = playerExpenses;
+
+//     perPlayerCount.value="";
+// });
 
 
 
-    const playerExpenses = addedPlayer * perPlayeroutput;
-
-
-    const playerCalculate = document.getElementById("player-expanses");
-
-
-    playerCalculate.innerText = playerExpenses;
-
-    perPlayerCount.value="";
-});
 
 
 document.getElementById("total-Calculate").addEventListener("click",function(){
