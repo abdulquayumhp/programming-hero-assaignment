@@ -13,18 +13,16 @@ const perPlayerCount = document.getElementById("Total-added-player")
 
 const cartArray = [];
 
-
-
 function display(cartproduct){
 
     const tableBody = document.getElementById("player-selected");
     tableBody.innerHTML = "";
 
-    for(let i = 1; i <= cartproduct.length; i++){
+    for(let i = 0; i < cartproduct.length; i++){
        const numberOfPlayer = i;
        console.log(numberOfPlayer)
        
-    if(numberOfPlayer <= 3 ){
+    if(numberOfPlayer < 5 ){
         const nameBox = cartArray[i].PlayerName;
    
         const tr = document.createElement("tr");
@@ -38,18 +36,16 @@ function display(cartproduct){
         tableBody.appendChild(tr);
       
     }else{
+        alert("please you can't take no more player")
+        return numberOfPlayer;
        
 
     }
     document.getElementById("calculate-btn").addEventListener("click",function(){
-        const addedPlayer = numberOfPlayer;
-        
+        const addedPlayer = numberOfPlayer+1;
+        console.log(addedPlayer)
     
         const perPlayeroutput = getInputValue(perPlayerCount);
-        
-    
-    
-    
     
         const playerExpenses = addedPlayer * perPlayeroutput;
         console.log(playerExpenses)
@@ -74,7 +70,8 @@ const selectAllButton = document.querySelectorAll('.item');
 for (const select of selectAllButton) {
     select.addEventListener('click', function (event) {
        
-
+        event.target.disabled = true;
+        event.target.style.background = "gray";
         const name = event.target.parentNode.children[0].innerText;
         
 
@@ -89,10 +86,10 @@ for (const select of selectAllButton) {
         display(cartArray);
 
 
-        event.target.disabled = true;
+        
 
-        document.querySelectorAll('.item').disabled = true;
-        // document.querySelectorAll('.item').style.background = 'gray';
+        
+        
 
     })
 }
@@ -109,27 +106,6 @@ function getInputValue(inputValue){
 }
 
 
-// document.getElementById("calculate-btn").addEventListener("click",function(){
-//     const addedPlayer = numberOfPlayer;
-    
-
-//     const perPlayeroutput = getInputValue(perPlayerCount);
-//     console.log("box", perPlayeroutput, typeof perPlayeroutput)
-
-
-
-
-//     const playerExpenses = addedPlayer * perPlayeroutput;
-//     console.log(playerExpenses)
-
-
-//     const playerCalculate = document.getElementById("player-expanses");
-
-
-//     playerCalculate.innerText = playerExpenses;
-
-//     perPlayerCount.value="";
-// });
 
 
 
