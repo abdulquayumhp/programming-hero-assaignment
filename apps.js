@@ -1,5 +1,4 @@
 
-
 // input value golbaly function
 // input value golbaly function
 
@@ -67,7 +66,14 @@ function display(cartproduct){
         const perPlayeroutput = getInputValue(perPlayerCount);
         const playerExpenses = addedPlayer * perPlayeroutput;
         const playerCalculate = document.getElementById("player-expanses");
-        playerCalculate.innerText = playerExpenses;
+        // playerCalculate.innerText = playerExpenses;
+        
+        if(playerExpenses > 0){
+            return playerCalculate.innerText = playerExpenses;
+        }
+        else {
+            alert('Please input your valid number !!')
+        }
     
     });
    
@@ -87,7 +93,7 @@ for (const select of selectAllButton) {
 
         // button disable 
         event.target.disabled = true;
-        event.target.style.background = "gray";
+        event.target.style.background = "skyblue";
 
 
 
@@ -129,20 +135,28 @@ document.getElementById("total-Calculate").addEventListener("click",function(){
         const coachOutput = getInputValue(coachExpanse);
 
 
-        // get result with palyer expenses 
-        const  playerCalculateTwo = document.getElementById("player-expanses").innerText;
-        const playerCalculateStrig =parseInt(playerCalculateTwo) 
+       if(managerExpanse < 0 || coachExpanse < 0){
+         // get result with palyer expenses 
+         const  playerCalculateTwo = document.getElementById("player-expanses").innerText;
+         const playerCalculateStrig =parseInt(playerCalculateTwo) 
+ 
+ 
+         // all player and manager cotch subtotal 
+         const perManagerOptput =  managerOutput + coachOutput + playerCalculateStrig ;
+ 
+ 
+         const totalTeamExpanse = document.getElementById("total");
+         totalTeamExpanse.innerText = perManagerOptput;
+ 
+         managerExpanse.value="";
+         coachExpanse.value="";
 
-
-        // all player and manager cotch subtotal 
-        const perManagerOptput =  managerOutput + coachOutput + playerCalculateStrig ;
-
-
-        const totalTeamExpanse = document.getElementById("total");
-        totalTeamExpanse.innerText = perManagerOptput;
-
-        managerExpanse.value="";
-        coachExpanse.value="";
+       }
+       
+       
+       else{
+        alert("bai")
+       }
 
 
 }); 
