@@ -1,75 +1,73 @@
 
+const cartArray = [];
 
 
-// function allButtonSelect(){
-//     let buttton =  document.querySelectorAll(".item");
+
+function display(cartproduct){
+
+    const tableBody = document.getElementById("player-selected");
+    tableBody.innerHTML = "";
+
+   for(let i = 0; i < cartproduct.length; i++){
+       const numberOfPlayer = i;
+       
+
+    if(numberOfPlayer <= 4 ){
+        const nameBox = cartArray[i].PlayerName;
    
-//     const playerselected = document.getElementById("player-selected");
-//     for(let i = 0; i < buttton.length; i++){
-//         const index =  buttton[i];
-//         index.addEventListener("click",function(e){
-//             const item = e.target.parentNode.children[0].innerText;
-        
-//             const tr = document.createElement("tr");
+        const tr = document.createElement("tr");
 
-//             playerselected.innerHTML = `
-          
-//             <th>${i+1}</th>
-//             <td>${item}</td>
-           
-//             `;
-//             playerselected .appendChild(tr);
-            
-//         })
-//     }
+        tr.innerHTML=`
+        <th>${i+1}</th>
+        <td>${nameBox}</td>
+        
+        `;
+
+        tableBody.appendChild(tr);
+      
+    }else{
+        console.log("ami pagol")
+
+    }
+   
     
-// }
+  
+   }
+}
 
+const selectAllButton = document.querySelectorAll('.item');
+for (const select of selectAllButton) {
+    select.addEventListener('click', function (event) {
+       
 
-// allButtonSelect();
-
-// let array = [];
-// console.log
-
-//     let buttton =  document.querySelectorAll(".item");
-
-//     for(let i = 0; i < buttton.length; i++){
-//         const index =  buttton[i];
-//         index.addEventListener("click",function(e){
-//             const item = e.target.parentNode.children[0].innerText;
-//             const playerName ={
-//                 name : item
-//             }
-//             array.push(playerName);
-
-//             playerName();
-           
-//         });
-//     };
-
-//     function playerName(){
-
-//             const playerselected = document.getElementById("player-selected");
-//         playerselected.innerHTML = `
-//                     <tr>
-//                      <th>${i+1}</th>
-//                      <td>${item}</td>
-//                     </tr>
-                   
-//                     `;
-
+        const name = event.target.parentNode.children[0].innerText;
         
 
-//     }
+        const PlayerObj = {
+            PlayerName : name,
+            
+        }
+    
+        cartArray.push(PlayerObj);
+    
+    
+        display(cartArray);
 
 
+        event.target.disabled = true;
+
+        document.querySelectorAll('.item').disabled = true;
+        // document.querySelectorAll('.item').style.background = 'gray';
+
+    })
+}
 
 function getInputValue(inputValue){
 
     const inputValueField = inputValue.value;
     const inputValueFieldString = parseInt(inputValueField)
     return inputValueFieldString;
-    
+
 }
 
 const perPlayerCount = document.getElementById("Total-added-player")
@@ -82,37 +80,37 @@ document.getElementById("calculate-btn").addEventListener("click",function(){
 
 
     const perPlayeroutput = getInputValue(perPlayerCount);
-    
+
 
 
     const playerExpenses = addedPlayer * perPlayeroutput;
 
-    
+
     const playerCalculate = document.getElementById("player-expanses");
-    
+
 
     playerCalculate.innerText = playerExpenses;
-    
+
     perPlayerCount.value="";
 });
 
 
 document.getElementById("total-Calculate").addEventListener("click",function(){
         const managerExpanse = document.getElementById("manager-expanse");
-       
+
         const coachExpanse = document.getElementById("coach-expanse");
-       
+
 
 
 
         const  managerOutput = getInputValue(managerExpanse);
-       
-        
-        
+
+
+
         const coachOutput = getInputValue(coachExpanse);
-        
+
         const  playerCalculateTwo = document.getElementById("player-expanses").innerText;
-        
+
         const playerCalculateStrig =parseInt(playerCalculateTwo) 
 
 
@@ -127,12 +125,12 @@ document.getElementById("total-Calculate").addEventListener("click",function(){
 
         totalTeamExpanse.innerText = perManagerOptput;
 
-        
+
         managerExpanse.value="";
         coachExpanse.value="";
 
-       
 
 
-        
-});
+
+
+}); 
