@@ -52,7 +52,7 @@ function displayPlayerOutPut(allPlayer){
         tableBody.appendChild(tr);
       
     }else{
-        alert("Please input your valid number !!, if you click more than 5 palyer with invalid input like write and - value , than error massage will be show exactly how much you click with")
+        alert("please you can't take no more player,if you click more than 5 palyer with invalid input like write and - value , than error massage will be show exactly how much you click with")
         return numberOfPlayer;
     
     }
@@ -66,9 +66,12 @@ function displayPlayerOutPut(allPlayer){
         const perPlayeroutput = getInputValue(perPlayerCount);
         const playerExpenses = addedPlayer * perPlayeroutput;
         const playerCalculate = document.getElementById("player-expanses");
-        playerCalculate.innerText = playerExpenses;
         
-        
+        if(playerExpenses > 0){
+            playerCalculate.innerText = playerExpenses;
+        }
+       
+    
     });
    
    };
