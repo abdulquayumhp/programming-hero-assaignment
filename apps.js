@@ -18,7 +18,7 @@ const perPlayerCount = document.getElementById("Total-added-player")
 
 
 // all button for array with parantNode accecs multipul funcion 
-const cartArray = [];
+const PlayerArrayBox= [];
 
 
 
@@ -26,12 +26,12 @@ const cartArray = [];
 // palyer add and number count how much player add && select player
 
 
-function display(cartproduct){
+function displayPlayerOutPut(allPlayer){
 
     const tableBody = document.getElementById("player-selected");
     tableBody.innerHTML = "";
 
-    for(let i = 0; i < cartproduct.length; i++){
+    for(let i = 0; i < allPlayer.length; i++){
        const numberOfPlayer = i;
 
 
@@ -42,17 +42,17 @@ function display(cartproduct){
 
     if(numberOfPlayer < 5 ){
 
-        const nameBox = cartArray[i].PlayerName;
+        const PlayernameBox = PlayerArrayBox[i].PlayerName;
         const tr = document.createElement("tr");
         tr.innerHTML=`
         <th>${i+1}</th>
-        <td>${nameBox}</td>
+        <td>${PlayernameBox}</td>
         
         `;
         tableBody.appendChild(tr);
       
     }else{
-        alert("please you can't take no more player")
+        alert("Please input your valid number !!, if you click more than 5 palyer with invalid input like write and - value , than error massage will be show exactly how much you click with")
         return numberOfPlayer;
     
     }
@@ -66,15 +66,9 @@ function display(cartproduct){
         const perPlayeroutput = getInputValue(perPlayerCount);
         const playerExpenses = addedPlayer * perPlayeroutput;
         const playerCalculate = document.getElementById("player-expanses");
-        // playerCalculate.innerText = playerExpenses;
+        playerCalculate.innerText = playerExpenses;
         
-        if(playerExpenses > 0){
-            return playerCalculate.innerText = playerExpenses;
-        }
-        else {
-            alert('Please input your valid number !!')
-        }
-    
+        
     });
    
    };
@@ -91,24 +85,26 @@ const selectAllButton = document.querySelectorAll('.item');
 for (const select of selectAllButton) {
     select.addEventListener('click', function (event) {
 
+
+        
         // button disable 
         event.target.disabled = true;
         event.target.style.background = "skyblue";
 
 
 
-        const name = event.target.parentNode.children[0].innerText;
+        const PlayerIndivisualname = event.target.parentNode.children[0].innerText;
         
         // button and name value as a object 
         const PlayerObj = {
-            PlayerName : name,
+            PlayerName : PlayerIndivisualname,
             
         }
     
-        cartArray.push(PlayerObj);
+        PlayerArrayBox.push(PlayerObj);
     
 
-        display(cartArray);
+        displayPlayerOutPut(PlayerArrayBox);
 
 
     })
@@ -135,7 +131,7 @@ document.getElementById("total-Calculate").addEventListener("click",function(){
         const coachOutput = getInputValue(coachExpanse);
 
 
-       if(managerExpanse < 0 || coachExpanse < 0){
+       if(managerOutput > 0 || coachOutput > 0 ) {
          // get result with palyer expenses 
          const  playerCalculateTwo = document.getElementById("player-expanses").innerText;
          const playerCalculateStrig =parseInt(playerCalculateTwo) 
@@ -151,11 +147,9 @@ document.getElementById("total-Calculate").addEventListener("click",function(){
          managerExpanse.value="";
          coachExpanse.value="";
 
-       }
-       
-       
+       }     
        else{
-        alert("bai")
+        alert("Please input your valid number !!")
        }
 
 
